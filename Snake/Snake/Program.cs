@@ -9,10 +9,9 @@ namespace Snake
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("Hello!!! :D");
+        {          
             Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Hello!!! :D");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Hello!!! :D");
         }
