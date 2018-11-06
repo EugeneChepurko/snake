@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Threading;
 
 namespace Snake
 {
@@ -6,21 +7,31 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 3, '*');
-            Point p2 = new Point(2, 4, '*');         
-            Point p3 = new Point(3, 5, '*');         
-            Point p4 = new Point(4, 6, '*');         
+            Console.SetBufferSize(120,30);
 
-            List<Point> numList = new List<Point>();
-            numList.Add(p1);
-            numList.Add(p2);
-            numList.Add(p3);
-            numList.Add(p4);
-            
-            foreach (Point x in numList)
-            {
-                x.Draw();
-            }
+            HorizontalLine horizontalLineUp = new HorizontalLine(0, 118, 0, '+');
+            Figure horizontalLineDown = new HorizontalLine(0, 118, 27, '+');
+            Figure leftLine = new VerticalLine(0, 27, 0, '+');
+            Figure rightLine = new VerticalLine(0, 27, 118, '+');
+
+            horizontalLineUp.Draw();
+            horizontalLineDown.Draw();
+            leftLine.Draw();
+            rightLine.Draw();
+
+            Point point = new Point(4, 5, '*');
+            Snake snake = new Snake(point, 3, Direction.RIGHT);
+            snake.Draw();
+            snake.Move();
+
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
+            Thread.Sleep(300);
+            snake.Move();
         }
     }
 }
