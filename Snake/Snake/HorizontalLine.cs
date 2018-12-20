@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Snake
 {
@@ -12,14 +11,6 @@ namespace Snake
             {
                 Point point = new Point(i, y, symbol);
                 pointList.Add(point);
-            }
-        }
-        public override void Draw()
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            foreach (Point point in pointList)
-            {
-                point.Draw();
             }
         }
     }
