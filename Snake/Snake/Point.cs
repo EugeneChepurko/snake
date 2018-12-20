@@ -4,9 +4,9 @@ namespace Snake
 {
     class Point
     {
-        private int x;
-        private int y;
-        private char symbol;
+        int x;
+        int y;
+        public char symbol;
 
         public Point(int x, int y, char symbol)
         {
@@ -32,11 +32,11 @@ namespace Snake
             }
             else if (direction == Direction.UP)
             {
-                y = y + offset;
+                y = y - offset;
             }
             else if (direction == Direction.DOWN)
             {
-                y = y - offset;
+                y = y + offset;
             }
         }
 
@@ -50,6 +50,12 @@ namespace Snake
             symbol = ' ';
             Draw();
         }
+
+        internal bool IsHit(Point point)
+        {
+            return point.x == this.x && point.y == this.y;
+        }
+
         public override string ToString()
         {
             return x + ", " + y + ", " + symbol;
