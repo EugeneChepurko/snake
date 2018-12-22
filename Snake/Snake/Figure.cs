@@ -22,7 +22,7 @@ namespace Snake
             }
             return false;
         }
-        private bool IsHit(Point point)
+        internal bool IsHit(Point point)
         {
             foreach (Point p in pointList)
             {

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Snake
 {
     class Snake : Figure
     {
+        int HorizontalSpeed = 250;
+        int VerticalSpeed = 300;
         Direction _direction;
         public Snake(Point tail, int length, Direction direction)
         {
@@ -27,6 +30,15 @@ namespace Snake
 
             tail.Clear();
             head.Draw();
+
+            if (_direction == Direction.UP || _direction == Direction.DOWN)
+            {
+                Thread.Sleep(VerticalSpeed);
+            }
+            else
+            {
+                Thread.Sleep(HorizontalSpeed);
+            }
         }
 
         internal bool IsHitTail()
@@ -51,12 +63,34 @@ namespace Snake
         internal bool Eat(Point food)
         {
             Point head = GetNextPoint();
-            if(head.IsHit(food))
+            Point tempFood = null;
+
+            if (head.IsHit(food))
             {
                 food.symbol = head.symbol;
                 pointList.Add(food);
-                head.Clear();
-                food.Draw();
+                Score.score += 1;
+
+                for (int i = 0; i < pointList.Count; i++)
+                {
+                    if (!food.IsHit(pointList[i]))
+                    {
+                        if (head.IsHit(food))
+                        {
+                            if (!food.IsHit(GetNextPoint()))
+                            {
+                                head.Clear();
+                                food.Draw();
+                            }
+
+                        }
+                    }
+                }
+                if (HorizontalSpeed > 50)
+                    HorizontalSpeed -= 10;
+                if (VerticalSpeed > 100)
+                    VerticalSpeed -= 10;
+                tempFood = food;
                 return true;
             }
             return false;
