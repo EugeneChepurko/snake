@@ -82,7 +82,6 @@ namespace Snake
                                 head.Clear();
                                 food.Draw();
                             }
-
                         }
                     }
                 }
@@ -106,6 +105,14 @@ namespace Snake
                 _direction = Direction.UP;
             else if (key == ConsoleKey.DownArrow)
                 _direction = Direction.DOWN;
+        }
+        public void SnakeSpeed()
+        {
+            Console.SetCursorPosition(121, 1);
+            Console.WriteLine($"Speed Vertical = {VerticalSpeed}");
+            Console.SetCursorPosition(121, 2);
+            Console.WriteLine($"Speed Horizontal = {HorizontalSpeed}");
+            
         }
     }
 }

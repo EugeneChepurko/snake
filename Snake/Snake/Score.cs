@@ -9,6 +9,12 @@ namespace Snake
         public static int score = 0;
         public static int maxScore = 0;
 
+        public void ShowScore()
+        {
+            Console.SetCursorPosition(121, 4);
+            Console.WriteLine($"Your score = {score}");
+        }
+
         public void PrintScore()
         {
             Console.SetCursorPosition(45,10);
